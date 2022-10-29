@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.test.data.network
 
 /**
  *  공용 상태관리 및 api response 데이터

@@ -1,7 +1,6 @@
-package com.example.test
+package com.example.test.util
 
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
+import com.example.test.data.network.ApiState
 import retrofit2.HttpException
 import retrofit2.Response
 
@@ -9,7 +8,9 @@ fun <T> getResponseConvert( res : Response<T> ) : ApiState<T> {
 //    CoroutineExceptionHandler { _, throwable -> ApiState.Error(exception = throwable as Exception) }
     return try {
         when ( res.code() ) {
-            in 200..299 -> { ApiState.Success<T>(data = res.body()!!) }
+            in 200..299 -> {
+                ApiState.Success<T>(data = res.body()!!)
+            }
             else -> {
                 throw HttpException(res)
             }

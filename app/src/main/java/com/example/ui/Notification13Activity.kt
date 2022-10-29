@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.ui
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.app.NotificationChannel
@@ -19,17 +19,18 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import com.example.test.databinding.ActivityMainBinding
-import com.example.test.databinding.ActivityMainBindingImpl
+import com.example.test.R
+import com.example.test.base.BaseActivity
+import com.example.test.databinding.ActivityNotification13Binding
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity() {
-
-    lateinit var mainBinding : ActivityMainBinding
+class Notification13Activity(override val layoutResourceId: Int = R.layout.activity_notification_13)
+    : BaseActivity<ActivityNotification13Binding>() {
 
     private val notificationManager: NotificationManager by lazy {
         getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
+
     @RequiresApi(Build.VERSION_CODES.N)
     private val requestPermissionLauncher: ActivityResultLauncher<String>
     // Sets up permissions request launcher.
@@ -46,47 +47,53 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mainBinding = DataBindingUtil.setContentView<ActivityMainBinding?>(this, R.layout.activity_main).apply {
-            btnHiltTestBtn.setOnClickListener {
-                startActivity(
-                    Intent(this@MainActivity, HiltActivity::class.java)
-                )
-            }
-        }
-//        val binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
-        // Sets up notification channel.
-        createNotificationChannel()
-
-        // Sets up button.
-        findViewById<Button>(R.id.button_show_notification).setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    POST_NOTIFICATIONS,
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                showDummyNotification()
-            } else {
-                requestPermissionLauncher.launch(POST_NOTIFICATIONS)
-            }
-        }
-
-        // Refresh UI.
-        refreshUI()
+    companion object {
+        const val CHANNEL_ID = "dummy_channel"
     }
 
+    override fun aboutBinding() {
+        viewDataBinding.apply {
+            //        val binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+            btnHiltTestBtn.setOnClickListener {
+                startActivity(Intent(this@Notification13Activity, HiltActivity::class.java))
+            }
+            ktorBtn.setOnClickListener {
+                startActivity(Intent(this@Notification13Activity, KtorActivity::class.java))
+            }
 
+            // Sets up notification channel.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                createNotificationChannel()
+
+                // Sets up button.
+                buttonShowNotification.setOnClickListener {
+                    if (ContextCompat.checkSelfPermission(this@Notification13Activity, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                        showDummyNotification()
+                    } else {
+                        requestPermissionLauncher.launch(POST_NOTIFICATIONS)
+                    }
+                }
+            }
+
+
+            // Refresh UI.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { refreshUI() }
+        }
+
+    }
+
+    override fun observeData() {
+
+    }
 
     /**
      * Refresh UI elements.
      */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun refreshUI() {
-        findViewById<TextView>(R.id.text_notification_enabled).text =
+        viewDataBinding.textNotificationEnabled.text =
             if (notificationManager.areNotificationsEnabled()) "TRUE" else "FALSE"
     }
 
@@ -121,10 +128,6 @@ class MainActivity : AppCompatActivity() {
         with(NotificationManagerCompat.from(this)) {
             notify(1, builder.build())
         }
-    }
-
-    companion object {
-        const val CHANNEL_ID = "dummy_channel"
     }
 
 }

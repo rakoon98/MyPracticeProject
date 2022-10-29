@@ -1,21 +1,20 @@
-package com.example.test
+package com.example.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.test.data.network.ApiState
+import com.example.test.viewmodel.FlowViewModel
+import com.example.test.R
 import com.example.test.databinding.ActivityHiltBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

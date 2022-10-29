@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".MainActivity">
+        tools:context="com.example.ui.Notification13Activity">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_show_notification"
@@ -34,6 +34,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="힐트 테스트 액티비티로 이동" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ktorBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ktor 액티비티로 이동" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

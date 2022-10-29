@@ -1,9 +1,8 @@
-package com.example.test
+package com.example.test.data.repository
 
-import com.example.test.network.SwitchGamesApiInterface
+import com.example.test.data.network.ApiState
+import com.example.test.data.network.SwitchGamesApiInterface
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import javax.inject.Singleton
 
 interface TestRepository {
 
