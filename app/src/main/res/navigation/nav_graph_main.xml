@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.test.ui.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            app:destination="@id/recyclerViewFragment"
+            android:id="@+id/actionMainToRv"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/recyclerViewFragment"
+        android:name="com.example.test.ui.RecyclerViewFragment"
+        android:label="RecyclerViewFragment"
+        tools:layout="@layout/fragment_recyclerview"/>
+
+<!--    <fragment-->
+<!--        android:id="@+id/challengeFragment"-->
+<!--        android:name="net.huray.ehp.ui.main.challenge.ChallengeFragment" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/recordFragment"-->
+<!--        android:name="net.huray.ehp.ui.main.record.RecordFragment" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/coachFragment"-->
+<!--        android:name="net.huray.ehp.ui.main.coach.CoachFragment" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/reportFragment"-->
+<!--        android:name="net.huray.ehp.ui.main.report.ReportFragment" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/healthInfoFragment"-->
+<!--        android:name="net.huray.ehp.ui.main.health_info.HealthInfoFragment" />-->
+
+</navigation>

@@ -1,4 +1,4 @@
-package com.example.ui
+package com.example.test.ui
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.app.NotificationChannel
@@ -53,38 +53,8 @@ class Notification13Activity(override val layoutResourceId: Int = R.layout.activ
         const val CHANNEL_ID = "dummy_channel"
     }
 
-    override fun aboutBinding() {
-        viewDataBinding.apply {
-            //        val binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-            btnHiltTestBtn.setOnClickListener {
-                startActivity(Intent(this@Notification13Activity, HiltActivity::class.java))
-            }
-            ktorBtn.setOnClickListener {
-                startActivity(Intent(this@Notification13Activity, KtorActivity::class.java))
-            }
 
-            // Sets up notification channel.
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                createNotificationChannel()
-
-                // Sets up button.
-                buttonShowNotification.setOnClickListener {
-                    if (ContextCompat.checkSelfPermission(this@Notification13Activity, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                        showDummyNotification()
-                    } else {
-                        requestPermissionLauncher.launch(POST_NOTIFICATIONS)
-                    }
-                }
-            }
-
-
-            // Refresh UI.
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { refreshUI() }
-        }
-
-    }
-
-    override fun observeData() {
+    fun observeData() {
 
     }
 
@@ -127,6 +97,36 @@ class Notification13Activity(override val layoutResourceId: Int = R.layout.activ
 
         with(NotificationManagerCompat.from(this)) {
             notify(1, builder.build())
+        }
+    }
+
+    override fun onBindView() {
+        viewDataBinding.apply {
+            //        val binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+            btnHiltTestBtn.setOnClickListener {
+                startActivity(Intent(this@Notification13Activity, HiltActivity::class.java))
+            }
+            ktorBtn.setOnClickListener {
+                startActivity(Intent(this@Notification13Activity, KtorActivity::class.java))
+            }
+
+            // Sets up notification channel.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                createNotificationChannel()
+
+                // Sets up button.
+                buttonShowNotification.setOnClickListener {
+                    if (ContextCompat.checkSelfPermission(this@Notification13Activity, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                        showDummyNotification()
+                    } else {
+                        requestPermissionLauncher.launch(POST_NOTIFICATIONS)
+                    }
+                }
+            }
+
+
+            // Refresh UI.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { refreshUI() }
         }
     }
 

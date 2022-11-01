@@ -31,6 +31,7 @@ interface SwitchGamesApiInterface {
         data class SwitchGameData(
             @SerializedName("id") val id: Int = 0,
             @SerializedName("name") val name: String = "",
+            @SerializedName("testValue") val testValue: String = "테스트용도",
             @SerializedName("genre") val genre: List<String> = emptyList(),
             @SerializedName("developers") val developers: List<String> = emptyList(),
             @SerializedName("publishers") val publishers: List<String> = emptyList(),

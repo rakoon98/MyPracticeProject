@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context="com.example.ui.Notification13Activity">
+        tools:context=".ui.Notification13Activity">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_show_notification"

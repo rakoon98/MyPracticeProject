@@ -30,27 +30,16 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), Lifecycl
      *  @aboutBinding : 바인딩 후 기본적으로 해야할 부분을 담당
      *  @observeData  : 라이브데이터 관찰 후 컨트롤 해야하는 부분 등록하기 위함.
      */
-    abstract fun aboutBinding()
-    abstract fun observeData()
+    abstract fun onBindView()
 
     override fun onDestroy() {
         super.onDestroy()
-
-        /**
-         *  액티비티 onDestroy 로 넘어갔을 때 자원을 해제 하기 위해
-         *      => 임시 파일을 사용하는 액티비티에만 구현
-         */
-        when ( this::class.java ) {
-//            GlobalScope.launch { deleteTempImages() }
-            else -> {}
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding = DataBindingUtil.setContentView(this, layoutResourceId)
-        aboutBinding()
-        observeData()
+        onBindView()
     }
 
     /**

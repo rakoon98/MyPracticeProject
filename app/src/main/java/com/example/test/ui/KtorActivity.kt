@@ -1,4 +1,4 @@
-package com.example.ui
+package com.example.test.ui
 
 import android.util.Log
 import android.view.View
@@ -22,12 +22,7 @@ class KtorActivity(override val layoutResourceId: Int = R.layout.activity_ktor)
 
     private val viewModel by viewModels<KtorViewModel> { defaultViewModelProviderFactory }
 
-    override fun aboutBinding() {
-        viewDataBinding.lifecycleOwner = this
-        viewDataBinding.switchBtn.setOnClickListener { viewModel.getSwitchGames() }
-    }
-
-    override fun observeData() {
+    fun observeData() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.getSwitchGamesStateFlow.buffer().collectLatest { state ->
@@ -48,5 +43,10 @@ class KtorActivity(override val layoutResourceId: Int = R.layout.activity_ktor)
                 }
             }
         }
+    }
+
+    override fun onBindView() {
+        viewDataBinding.lifecycleOwner = this
+        viewDataBinding.switchBtn.setOnClickListener { viewModel.getSwitchGames() }
     }
 }

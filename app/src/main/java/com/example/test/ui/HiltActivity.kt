@@ -1,4 +1,4 @@
-package com.example.ui
+package com.example.test.ui
 
 import android.os.Bundle
 import android.view.View
@@ -85,7 +85,7 @@ class HiltActivity : AppCompatActivity() {
                     viewModel.getSwitchGamesStateFlow.buffer().collectLatest { state ->
                         when ( state ) {
                             is ApiState.Success -> {
-                                result.text = "${state.data?.size} 개"
+                                result.text = state.data?.getOrNull(0).toString()
                                 progress.visibility = View.GONE
                             }
                             is ApiState.Error -> {
