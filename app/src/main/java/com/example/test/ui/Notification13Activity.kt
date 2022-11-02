@@ -7,21 +7,17 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
 import com.example.test.R
 import com.example.test.base.BaseActivity
 import com.example.test.databinding.ActivityNotification13Binding
+import com.example.test.ui.hilt.HiltActivity
 import com.google.android.material.snackbar.Snackbar
 
 class Notification13Activity() : BaseActivity<ActivityNotification13Binding>(R.layout.activity_notification_13) {

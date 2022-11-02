@@ -1,4 +1,4 @@
-package com.example.test.ui
+package com.example.test.ui.hilt
 
 import android.os.Bundle
 import android.view.View

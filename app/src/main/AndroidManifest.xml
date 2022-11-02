@@ -31,7 +31,7 @@
                 android:value="" />
         </activity>
 
-        <activity android:name=".ui.HiltActivity"/>
+        <activity android:name=".ui.hilt.HiltActivity"/>
         <activity android:name=".ui.KtorActivity"/>
 
     </application>
