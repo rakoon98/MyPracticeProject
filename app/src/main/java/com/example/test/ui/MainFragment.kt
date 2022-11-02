@@ -12,7 +12,7 @@ import com.example.test.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment(override val layoutResourceId: Int = R.layout.fragment_main) : BaseFragment<FragmentMainBinding>(){
+class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main){
 
     override fun onBindView() {
         with ( binding ) {

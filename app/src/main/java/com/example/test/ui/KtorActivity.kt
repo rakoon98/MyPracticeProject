@@ -17,8 +17,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class KtorActivity(override val layoutResourceId: Int = R.layout.activity_ktor)
-    : BaseActivity<ActivityKtorBinding>() {
+class KtorActivity() : BaseActivity<ActivityKtorBinding>(R.layout.activity_ktor) {
 
     private val viewModel by viewModels<KtorViewModel> { defaultViewModelProviderFactory }
 

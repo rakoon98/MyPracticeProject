@@ -10,8 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
  *  여기서 분기처리가 된다.
  */
 @AndroidEntryPoint
-class MainActivity(override val layoutResourceId: Int = R.layout.activity_main)
-    : BaseActivity<ActivityMainBinding>() {
+class MainActivity() : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onBindView() {
 

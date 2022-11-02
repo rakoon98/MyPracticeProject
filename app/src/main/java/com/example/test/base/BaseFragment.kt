@@ -15,10 +15,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
 import com.example.test.R
 
-abstract class BaseFragment<T : ViewDataBinding> : Fragment(),
+abstract class BaseFragment<T : ViewDataBinding>(val layoutResourceId: Int) : Fragment(),
     LifecycleOwner, MenuProvider {
-
-    abstract val layoutResourceId: Int
 
     private var _binding: T? = null
     protected val binding get() = _binding!!

@@ -24,8 +24,7 @@ import com.example.test.base.BaseActivity
 import com.example.test.databinding.ActivityNotification13Binding
 import com.google.android.material.snackbar.Snackbar
 
-class Notification13Activity(override val layoutResourceId: Int = R.layout.activity_notification_13)
-    : BaseActivity<ActivityNotification13Binding>() {
+class Notification13Activity() : BaseActivity<ActivityNotification13Binding>(R.layout.activity_notification_13) {
 
     private val notificationManager: NotificationManager by lazy {
         getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

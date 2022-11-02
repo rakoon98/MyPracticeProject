@@ -17,14 +17,14 @@ import com.example.test.R
 /**
  *  액티비티에서의 완전히 공통적으로 가질수 있거나 가져야하는 기능을 관리하기 위함.
  */
-abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), LifecycleOwner {
+abstract class BaseActivity<T : ViewDataBinding>(val layoutResourceId: Int) : AppCompatActivity(), LifecycleOwner {
 
     /**
      * @viewDataBinding  : 데이터바인딩
      * @layoutResourceId : 레이아웃 리소스 아이디
      */
     lateinit var viewDataBinding: T
-    abstract val layoutResourceId: Int
+//    abstract val layoutResourceId: Int
 
     /**
      *  @aboutBinding : 바인딩 후 기본적으로 해야할 부분을 담당

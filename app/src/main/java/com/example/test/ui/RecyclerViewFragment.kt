@@ -13,8 +13,7 @@ import com.example.test.ui.adapter.RvAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RecyclerViewFragment(override val layoutResourceId: Int = R.layout.fragment_recyclerview)
-    : BaseFragment<FragmentRecyclerviewBinding>() {
+class RecyclerViewFragment : BaseFragment<FragmentRecyclerviewBinding>(R.layout.fragment_recyclerview) {
 
     val list : List<RvModel> = mutableListOf<RvModel>(
         RvModel(
