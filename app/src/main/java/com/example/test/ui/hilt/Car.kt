@@ -21,7 +21,7 @@ class GasolineCarC : Car {
     @InstallIn(SingletonComponent::class)
     // AndroidEntryPoint 지정이 안되는 Hilt 지정 불가능 class에서 주입받을수있게하는것.
     @EntryPoint
-    interface getData {
+    interface StringDataBase {
         fun getString() : String
     }
 
