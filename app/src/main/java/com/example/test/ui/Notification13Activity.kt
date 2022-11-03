@@ -122,6 +122,15 @@ class Notification13Activity() : BaseActivity<ActivityNotification13Binding>(R.l
 
             // Refresh UI.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { refreshUI() }
+
+            maskId.text = StringBuffer().apply {
+                "안드로이드 포에버".forEachIndexed { index, c ->
+                    when ( index > 3 ) {
+                        true  -> append(c)
+                        false -> append("*")
+                    }
+                }
+            }.toString()
         }
     }
 

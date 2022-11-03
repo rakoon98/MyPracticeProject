@@ -17,6 +17,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:id="@+id/maskId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Is Notification Enabled?" />

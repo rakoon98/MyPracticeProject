@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.test.R
 import com.example.test.base.BaseFragment
+import com.example.test.compose.ui.ComposeActivity
 import com.example.test.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +20,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main){
             lifecycleOwner = viewLifecycleOwner
             recyclerViewBtn.setOnClickListener { findNavController().navigate(MainFragmentDirections.actionMainToRv()) }
             notiBtn.setOnClickListener { startActivity(Intent(requireContext(), Notification13Activity::class.java)) }
+            composeBtn.setOnClickListener { startActivity(Intent(requireContext(), ComposeActivity::class.java)) }
         }
     }
 

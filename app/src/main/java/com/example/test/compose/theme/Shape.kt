@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.example.jetsnack.ui.theme
+package com.example.test.compose.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
 import androidx.compose.ui.unit.dp
 
-val Shapes = Shapes(
+val MyShapes = androidx.compose.material3.Shapes(
     small = RoundedCornerShape(percent = 50),
     medium = RoundedCornerShape(20.dp),
     large = RoundedCornerShape(0.dp)
