@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Test</string>
+
+    // 컴포즈관련
+    <string name="homeTitle">홈</string>
+    <string name="content1Title">컨텐츠1</string>
+    <string name="content2Title">컨텐츠2</string>
+    <string name="moreTitle">더보기</string>
 </resources>

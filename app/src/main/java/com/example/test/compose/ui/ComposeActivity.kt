@@ -11,7 +11,7 @@ class ComposeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         // This app draws behind the system bars, so we want to handle fitting system windows
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        setContent {  }
+        setContent { ComposeApp() }
     }
 
 }
