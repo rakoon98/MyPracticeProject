@@ -1,11 +1,16 @@
 package com.example.test.compose.model.nav
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
@@ -37,23 +42,39 @@ val bottomList = listOf<BottomNavItem>(
 fun BottomNavBuild(
     navController : NavHostController
 ) {
-    BottomNavigation {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
+    val bottomBarState = rememberSaveable { (mutableStateOf(true)) }
 
-        bottomList.forEach { bottomItem ->
-            BottomNavigationItem(
-                selected = false,
-                icon = { Icon( painterResource(id = bottomItem.icon), contentDescription = null ) },
-                label = { Text(text = stringResource(id = bottomItem.title), fontSize = 16.sp) },
-                onClick = {
-                      navController.navigate(bottomItem.screenRoute) {
-                          popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                          launchSingleTop = true
-                          restoreState = true
-                      }
-                },
-            )
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
+    when ( currentRoute ) {
+        Routes.HOME,
+        Routes.CONTENTS1,
+        Routes.CONTENTS2,
+        Routes.MORE -> true
+        else -> false
+    }.also { bottomBarState.value = it }
+
+    AnimatedVisibility(
+        visible = bottomBarState.value,
+        enter = slideInVertically( initialOffsetY = { it } ),
+        exit = slideOutVertically( targetOffsetY = { it } )
+    ) {
+        BottomNavigation {
+            bottomList.forEach { bottomItem ->
+                BottomNavigationItem(
+                    selected = false,
+                    icon = { Icon( painterResource(id = bottomItem.icon), contentDescription = null ) },
+                    label = { Text(text = stringResource(id = bottomItem.title), fontSize = 16.sp) },
+                    onClick = {
+                        navController.navigate(bottomItem.screenRoute) {
+                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
+                )
+            }
         }
     }
 }

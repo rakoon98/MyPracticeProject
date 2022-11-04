@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,6 +18,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.test.compose.model.nav.Routes
 import com.example.test.viewmodel.ContentViewModel
 
 @Composable
@@ -29,8 +31,11 @@ fun Content1Screen(
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
+        val (list, btn) = createRefs()
+
         LazyColumn(
             modifier = Modifier.fillMaxSize()
+                .constrainAs(list){}
         ) {
             items(1000) { index ->
                 ListItem(
@@ -40,6 +45,24 @@ fun Content1Screen(
                     index
                 )
             }
+        }
+
+        Button(
+            modifier = Modifier
+                .wrapContentSize()
+                .constrainAs(btn) {
+                    bottom.linkTo(parent.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                },
+            onClick = {
+                navController.navigate( "${Routes.CONTENT_DETAIL}/${collectSelectedIndex.value}" )
+            }
+        ) {
+            Text(
+                modifier = Modifier.size(50.dp),
+                text  = "이동"
+            )
         }
     }
 }
@@ -57,7 +80,7 @@ fun ListItem(
             .fillMaxWidth()
             .wrapContentHeight()
             .background(
-                if ( selectedIndex == index ) Color.Yellow else Color.White
+                if (selectedIndex == index) Color.Yellow else Color.White
             )
             .clickable {
                 contentViewModel.selectIndex(index)
