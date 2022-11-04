@@ -20,15 +20,15 @@ fun ComposeNavigation(navController: NavHostController) {
         startDestination = Graphs.BOTTOM
     ) {
 //        composable(route = Routes.HOME) { HomeScreen() }
-        bottomNavigationGraph()
+        bottomNavigationGraph(navController)
     }
 }
 
 
-fun NavGraphBuilder.bottomNavigationGraph() {
+fun NavGraphBuilder.bottomNavigationGraph(navController: NavHostController) {
     navigation(startDestination = Routes.HOME, route = Graphs.BOTTOM) {
         composable(route = Routes.HOME) { HomeScreen() }
-        composable(route = Routes.CONTENTS1) { Content1Screen() }
+        composable(route = Routes.CONTENTS1) { Content1Screen(navController) }
         composable(route = Routes.CONTENTS2) { Content2Screen() }
         composable(route = Routes.MORE) { MoreScreen() }
     }

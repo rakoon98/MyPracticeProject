@@ -22,9 +22,7 @@ fun ComposeApp() {
         Scaffold(
             bottomBar = { BottomNavBuild(navController) }
         ) { sPadding ->
-            Box(modifier = Modifier.padding(
-                PaddingValues(0.dp, 0.dp, 0.dp, sPadding.calculateBottomPadding())
-            )) {
+            Box(modifier = Modifier.padding(PaddingValues(0.dp, 0.dp, 0.dp, sPadding.calculateBottomPadding()))) {
                 ComposeNavigation(navController)
             }
         }
