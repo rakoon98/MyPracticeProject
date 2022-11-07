@@ -7,6 +7,8 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
@@ -54,7 +56,7 @@ fun DropDownTest() {
         Text(text = "Show DropDownMenu")
     }
 
-    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }, offset = DpOffset(0.dp, 12.dp)) {
         DropdownMenuItem(text = { Text(text = "첫번째 아이템") }, onClick = { expanded = false })
         DropdownMenuItem(text = { Text(text = "두번째 아이템") }, onClick = { expanded = false })
         DropdownMenuItem(text = { Text(text = "세번째 아이템") }, onClick = { expanded = false })
