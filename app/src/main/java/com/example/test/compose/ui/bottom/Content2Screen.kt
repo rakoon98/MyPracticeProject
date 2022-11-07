@@ -10,9 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
+import com.example.test.compose.model.nav.Routes
 
 @Composable
-fun Content2Screen() {
+fun Content2Screen(navController: NavController) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -40,6 +42,11 @@ fun Content2Screen() {
                 }
         ){
             Text(text = "this is Row")
+            Button(
+                onClick = { navController.navigate(Routes.VIEW_PAGER) }
+            ) {
+                Text(text = "뷰페이저 스크린으로")
+            }
         }
 
 

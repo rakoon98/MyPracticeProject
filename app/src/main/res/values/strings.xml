@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">Kun\'s Sample Project</string>
 
     // 컴포즈관련
     <string name="homeTitle">홈</string>

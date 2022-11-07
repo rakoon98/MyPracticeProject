@@ -11,6 +11,7 @@ import com.example.test.compose.ui.bottom.Content2Screen
 import com.example.test.compose.ui.bottom.HomeScreen
 import com.example.test.compose.ui.bottom.MoreScreen
 import com.example.test.compose.ui.contents.ContentsDetail
+import com.example.test.compose.ui.contents.ViewPagerScreen
 import kotlinx.serialization.builtins.serializer
 
 @Composable
@@ -30,7 +31,7 @@ fun NavGraphBuilder.bottomNavigationGraph(navController: NavHostController) {
     navigation(startDestination = Routes.HOME, route = Graphs.BOTTOM) {
         composable(route = Routes.HOME) { HomeScreen() }
         composable(route = Routes.CONTENTS1) { Content1Screen(navController) }
-        composable(route = Routes.CONTENTS2) { Content2Screen() }
+        composable(route = Routes.CONTENTS2) { Content2Screen(navController) }
         composable(route = Routes.MORE) { MoreScreen() }
     }
 }
@@ -45,5 +46,6 @@ fun NavGraphBuilder.contentNavigationGraph(navController: NavController) {
         ) {
             ContentsDetail(navController, it.arguments?.getInt("id",-1) ?: -1)
         }
+        composable(route = Routes.VIEW_PAGER) { ViewPagerScreen(navController) }
     }
 }

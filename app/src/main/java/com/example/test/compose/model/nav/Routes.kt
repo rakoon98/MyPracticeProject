@@ -12,4 +12,5 @@ object Routes {
     const val MORE = "more"
 
     const val CONTENT_DETAIL = "contentDetail"
+    const val VIEW_PAGER = "viewPager"
 }

@@ -17,6 +17,7 @@
 package com.example.jetsnack.ui.theme
 
 import androidx.compose.ui.graphics.Color
+import kotlin.random.Random
 
 val Shadow11 = Color(0xff001787)
 val Shadow10 = Color(0xff00119e)
@@ -144,3 +145,13 @@ val md_theme_dark_inverseOnSurface = Color(0xFF201A1A)
 val md_theme_dark_inverseSurface = Color(0xFFECE0DF)
 val md_theme_dark_inversePrimary = Color(0xFFBF0031)
 val md_theme_dark_surfaceTint = Color(0xFFFFB3B4)
+
+
+// 랜덤 칼라 가져오기
+//fun Color.Companion.random() : Color {
+fun randomColor() : Color {
+    val red = Random.nextInt(256)
+    val green = Random.nextInt(256)
+    val blue = Random.nextInt(256)
+    return Color(red, green, blue)
+}
