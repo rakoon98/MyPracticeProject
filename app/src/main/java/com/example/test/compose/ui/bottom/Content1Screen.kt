@@ -18,6 +18,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.test.compose.model.nav.Graphs
 import com.example.test.compose.model.nav.Routes
 import com.example.test.viewmodel.ContentViewModel
 
@@ -57,10 +58,11 @@ fun Content1Screen(
                 },
             onClick = {
                 navController.navigate( "${Routes.CONTENT_DETAIL}/${collectSelectedIndex.value}" )
-            }
+            },
         ) {
+
             Text(
-                modifier = Modifier.size(50.dp),
+                modifier = Modifier.wrapContentSize(),
                 text  = "이동"
             )
         }
