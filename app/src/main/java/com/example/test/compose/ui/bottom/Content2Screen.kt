@@ -7,10 +7,12 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
+import com.example.test.R
 import com.example.test.compose.model.nav.Routes
 
 @Composable
@@ -41,7 +43,7 @@ fun Content2Screen(navController: NavController) {
                     top.linkTo(col.bottom)
                 }
         ){
-            Text(text = "this is Row")
+            Text(text = stringResource(id = R.string.app_name))
             Button(
                 onClick = { navController.navigate(Routes.VIEW_PAGER) }
             ) {

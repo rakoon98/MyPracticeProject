@@ -33,7 +33,10 @@
 
         <activity android:name=".ui.hilt.HiltActivity"/>
         <activity android:name=".ui.KtorActivity"/>
-        <activity android:name=".compose.ui.ComposeActivity"/>
+        <activity
+            android:name=".compose.ui.ComposeActivity"
+            android:windowSoftInputMode="adjustResize"
+            />
 
     </application>
 
