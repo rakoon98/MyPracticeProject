@@ -1,9 +1,6 @@
 package com.example.test.compose.ui.contents
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Tab
@@ -13,16 +10,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.lerp
 import androidx.navigation.NavController
 import com.example.jetsnack.ui.theme.randomColor
 import com.google.accompanist.pager.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.math.absoluteValue
@@ -57,7 +51,7 @@ fun HorizontalViewPager(
             modifier = Modifier
                 .padding(48.dp)
                 .background(color = randomColor())
-                .size(100.dp)
+                .fillMaxSize()
                 .graphicsLayer {
                     /** 캐러셀 적용하는 방법 ... 와  */
                     // Calculate the absolute offset for the current page from the
@@ -66,14 +60,14 @@ fun HorizontalViewPager(
                     val pageOffset = calculateCurrentOffsetForPage(index).absoluteValue
 
                     // We animate the scaleX + scaleY, between 85% and 100%
-                    lerp(
-                        start = 0.75f,
-                        stop = 1f,
-                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                    ).also { scale ->
-                        scaleX = scale
-                        scaleY = scale
-                    }
+//                    lerp(
+//                        start = 0.75f,
+//                        stop = 1f,
+//                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
+//                    ).also { scale ->
+//                        scaleX = scale
+//                        scaleY = scale
+//                    }
 
                     // We animate the alpha, between 50% and 100%
 //                    alpha = lerp(

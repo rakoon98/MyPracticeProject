@@ -8,9 +8,10 @@ object Graphs {
 object Routes {
     const val HOME = "home"
     const val CONTENTS1 = "contents1"
-    const val CONTENTS2 = "contents2"
+    const val CONTENTS_MAIN = "contents_main"
     const val MORE = "more"
 
     const val CONTENT_DETAIL = "contentDetail"
     const val VIEW_PAGER = "viewPager"
+    const val ITEMS_ANIMATOR = "ITEMS_ANIMATOR"
 }

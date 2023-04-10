@@ -68,14 +68,14 @@ class Notification13Activity() : BaseActivity<ActivityNotification13Binding>(R.l
      */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel() {
-        val channel = NotificationChannel(
-            CHANNEL_ID,
-            "Important Notification Channel",
-            NotificationManager.IMPORTANCE_HIGH,
-        ).apply {
-            description = "This notification contains important announcement, etc."
-        }
-        notificationManager.createNotificationChannel(channel)
+//        val channel = NotificationChannel(
+//            CHANNEL_ID,
+//            "Important Notification Channel",
+//            NotificationManager.IMPORTANCE_HIGH,
+//        ).apply {
+//            description = "This notification contains important announcement, etc."
+//        }
+//        notificationManager.createNotificationChannel(channel)
     }
 
     /**
@@ -84,15 +84,15 @@ class Notification13Activity() : BaseActivity<ActivityNotification13Binding>(R.l
      * The notification won't appear if the user doesn't grant notification permission first.
      */
     private fun showDummyNotification() {
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Congratulations! 🎉🎉🎉")
-            .setContentText("You have post a notification to Android 13!!!")
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-
-        with(NotificationManagerCompat.from(this)) {
-            notify(1, builder.build())
-        }
+//        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+//            .setSmallIcon(R.drawable.ic_launcher_foreground)
+//            .setContentTitle("Congratulations! 🎉🎉🎉")
+//            .setContentText("You have post a notification to Android 13!!!")
+//            .setPriority(NotificationCompat.PRIORITY_HIGH)
+//
+//        with(NotificationManagerCompat.from(this)) {
+////            notify(1, builder.build())
+//        }
     }
 
     override fun onBindView() {

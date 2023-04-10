@@ -2,15 +2,18 @@ package com.example.test.compose.ui.bottom
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListItemInfo
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,6 +31,16 @@ fun Content1Screen(
     contentViewModel : ContentViewModel = viewModel()
 ) {
     val collectSelectedIndex = contentViewModel.selectedIndex.collectAsState(-1)
+    val lazyListState = rememberLazyListState()
+    // used to obtain initial offsets on drag start
+    var initiallyDraggedElement by remember {mutableStateOf<LazyListItemInfo?>(null) }
+    var currentIndexOfDraggedItem by remember { mutableStateOf<Int?>(null) }
+
+//    val dragDropListState = rememberDragDropListState(onMove = onMove)
+
+    LaunchedEffect(Unit) {
+        contentViewModel.getAlarmListInViewModel()
+    }
 
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
@@ -35,8 +48,19 @@ fun Content1Screen(
         val (list, btn) = createRefs()
 
         LazyColumn(
-            modifier = Modifier.fillMaxSize()
-                .constrainAs(list){}
+            modifier = Modifier
+                .fillMaxSize()
+                .constrainAs(list) {}
+                .pointerInput(Unit) {
+//                    detectDragGesturesAfterLongPress(
+//                        onDrag = { change, offset ->
+//
+//                        },
+//                        onDragStart = { offset ->  },
+//                        onDragCancel = {  },
+//                        onDragEnd = {  }
+//                    )
+                }
         ) {
             items(1000) { index ->
                 ListItem(
@@ -106,3 +130,4 @@ fun ListPreView() {
         1000
     )
 }
+

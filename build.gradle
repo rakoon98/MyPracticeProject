@@ -1,21 +1,33 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.java_version = JavaVersion.VERSION_1_8
-    ext.gradle_version = '7.3.1'
-    ext.gradle_plugin_version ='1.7.20'
-//    ext.gradle_plugin_version = '1.6.10'
-    ext.google_services_version = '4.3.13'
-    ext.hilt_version = '2.42'
+    ext {
+        gradle_version = '7.4.2'
+        kotlin_jetbrains_version ='1.8.10'
+//    gradle_plugin_version = '1.6.10'
+        google_services_version = '4.3.13'
+
+        dagger_hilt_version = "2.44"
+        dagger_hilt_x_viewmodel_version = "1.0.0-alpha03"
+        dagger_hilt_x_common_version = "1.0.0"
+        dagger_hilt_x_compiler_version = "1.0.0-alpha03"
+
+        compose_navigation = "2.5.3"
+        compose_compiler_version = "1.4.3"
+
+        nav_version = '2.3.2'
+
+        work_version = '2.7.1'
+    }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$gradle_plugin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_jetbrains_version"
 
         classpath "com.android.tools.build:gradle:$gradle_version"
 //        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
 
         classpath "com.google.gms:google-services:$google_services_version"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.6.0-alpha02"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_hilt_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3"
     }
 
     repositories {
@@ -30,24 +42,15 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
 }
 
-
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-//plugins {
-//    id 'com.android.application' version '7.3.1' apply false
-//    id 'com.android.library' version '7.3.1' apply false
-//    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
-//}
-
-//plugins {
-////    id 'com.android.application' version '7.0.0' apply false
-////    id 'com.android.library' version '7.0.0' apply false
-////    id "org.jetbrains.kotlin.android" version '1.6.10' apply false
-//    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
-//}
-
 ext {
+    compose_version = "1.4.1"
+    compose_runtime_version = "1.1.0"
+    compose_activity_version = "1.6.0-alpha05"
+    compose_hilt_version = '1.0.0'
+    accompanist_version = "0.23.1"
+
+
     ktor_version = '1.6.3'
-    compose_version = '1.0.5'
     hilt_version = '2.42'
 
     room_version = '2.4.3'

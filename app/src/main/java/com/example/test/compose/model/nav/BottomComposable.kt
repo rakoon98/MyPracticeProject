@@ -18,7 +18,6 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.test.R
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 
 sealed class BottomNavItem (
     val title : Int,
@@ -27,7 +26,7 @@ sealed class BottomNavItem (
 ) {
     object Home : BottomNavItem(R.string.homeTitle, R.drawable.ic_baseline_favorite_24, Routes.HOME)
     object Contents1 : BottomNavItem(R.string.content1Title, R.drawable.ic_baseline_favorite_24, Routes.CONTENTS1)
-    object Contents2 : BottomNavItem(R.string.content2Title, R.drawable.ic_baseline_favorite_24, Routes.CONTENTS2)
+    object Contents2 : BottomNavItem(R.string.content2Title, R.drawable.ic_baseline_favorite_24, Routes.CONTENTS_MAIN)
     object More : BottomNavItem(R.string.moreTitle, R.drawable.ic_baseline_favorite_24, Routes.MORE)
 }
 
@@ -50,7 +49,7 @@ fun BottomNavBuild(
     when ( currentRoute ) {
         Routes.HOME,
         Routes.CONTENTS1,
-        Routes.CONTENTS2,
+        Routes.CONTENTS_MAIN,
         Routes.MORE -> true
         else -> false
     }.also { bottomBarState.value = it }
