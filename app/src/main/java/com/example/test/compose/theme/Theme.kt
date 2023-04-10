@@ -119,7 +119,7 @@ fun MyTheme(
 
     SideEffect {
         systemUiController.setSystemBarsColor(
-            color = if(darkTheme) Color.LightGray else Color.Magenta
+            color = if(darkTheme) Color.LightGray else Color.DarkGray
         )
     }
 

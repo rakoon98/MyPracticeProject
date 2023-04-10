@@ -1,6 +1,5 @@
 package com.example.test.di
 
-import com.example.test.data.network.SwitchGamesApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,7 +49,5 @@ object NetworkModule {
             .client(okHttpClient)
             .build()
 
-    @Provides
-    fun provideApiService(retrofit: Retrofit) = retrofit.create(SwitchGamesApiInterface::class.java)
 
 }
