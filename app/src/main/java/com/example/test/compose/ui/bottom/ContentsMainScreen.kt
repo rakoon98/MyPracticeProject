@@ -1,6 +1,5 @@
 package com.example.test.compose.ui.bottom
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -11,9 +10,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.test.compose.model.nav.Routes
+import com.example.test.data.model.PersonModel
+import com.example.test.viewmodel.SharedViewModel
 
 @Composable
-fun ContentsMainScreen(navController: NavController) {
+fun ContentsMainScreen(
+    navController: NavController,
+    sharedViewModel: SharedViewModel
+) {
     var expanded by remember { mutableStateOf(false) }
 
     Column(
@@ -33,12 +37,24 @@ fun ContentsMainScreen(navController: NavController) {
 //        }
 
 
-
         SameButton("Go To ViewPager Screen") { navController.navigate(Routes.VIEW_PAGER) }
         SameButton("Go To ItemsAnimator Screen") { navController.navigate(Routes.ITEMS_ANIMATOR) }
         SameButton("Go To Loading Animator Circle Screen") { navController.navigate(Routes.LOADING_ANIMATION) }
         SameButton("Go To SelectableItem Screen") { navController.navigate(Routes.SELECTABLE_ITEM) }
         SameButton("Go To Canvas Drawer Screen") { navController.navigate(Routes.CANVAS) }
+        SameButton("Go To Pass Parcelable model Screen") {
+            // navController PARCELABLE 객체 보내기 1
+            val person = PersonModel("정현")
+            navController.run {
+                currentBackStackEntry?.savedStateHandle?.set(key = "person", value = person)
+                navigate(Routes.PARCELABLE)
+            }
+
+            // or
+
+            sharedViewModel.changePerson(person)
+            navController.navigate(Routes.PARCELABLE)
+        }
     }
 
 
@@ -72,7 +88,11 @@ fun DropDownSample() {
     Box {
         SameButton("DropDownTest") { expanded = !expanded }
 
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }, offset = DpOffset(0.dp, 12.dp)) {
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            offset = DpOffset(0.dp, 12.dp)
+        ) {
             DropdownMenuItem(text = { Text(text = "첫번째 아이템") }, onClick = { expanded = false })
             DropdownMenuItem(text = { Text(text = "두번째 아이템") }, onClick = { expanded = false })
             DropdownMenuItem(text = { Text(text = "세번째 아이템") }, onClick = { expanded = false })

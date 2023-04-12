@@ -17,4 +17,5 @@ object Routes {
     const val LOADING_ANIMATION = "LOADING_ANIMATION"
     const val SELECTABLE_ITEM = "SELECTABLE_ITEM"
     const val CANVAS = "CANVAS"
+    const val PARCELABLE  = "PARCELABLE"
 }
