@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.test.data.model.PersonModel
 import com.example.test.viewmodel.SharedViewModel
 
+@ExperimentalMaterial3Api
 @Composable
 fun ParcelableScreen(
     //person : PersonModel,
@@ -42,20 +44,21 @@ fun ParcelableScreen(
 //        )
         androidx.compose.material.OutlinedTextField(
             // backGround 및 border 변경
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp)
-                .border(
-                    width = 1.dp,
-                    color = Color.Cyan,
-                    shape = RoundedCornerShape(22.dp)
-                )
-                .background(Color.Cyan, RoundedCornerShape(22.dp)),
-            shape = RoundedCornerShape(22.dp),
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(start = 20.dp, end = 20.dp)
+//                .border(
+//                    width = 1.dp,
+//                    color = Color.Cyan,
+//                    shape = RoundedCornerShape(22.dp)
+//                )
+//                .background(Color.Cyan, RoundedCornerShape(22.dp)),
+//            shape = RoundedCornerShape(22.dp),
             value = collectNewPerson,
+            label = {Text("Input")},
             onValueChange = {
                 collectNewPerson = it
-            },
+            }
         )
         Button(onClick = { sharedViewModel.changePerson(PersonModel(collectNewPerson)) }) {
             Text(text = "사용자 이름 변경")
