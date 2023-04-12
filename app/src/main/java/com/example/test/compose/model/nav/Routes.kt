@@ -14,4 +14,7 @@ object Routes {
     const val CONTENT_DETAIL = "contentDetail"
     const val VIEW_PAGER = "viewPager"
     const val ITEMS_ANIMATOR = "ITEMS_ANIMATOR"
+    const val LOADING_ANIMATION = "LOADING_ANIMATION"
+    const val SELECTABLE_ITEM = "SELECTABLE_ITEM"
+    const val CANVAS = "CANVAS"
 }

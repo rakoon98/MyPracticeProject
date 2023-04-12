@@ -36,6 +36,9 @@ fun ContentsMainScreen(navController: NavController) {
 
         SameButton("Go To ViewPager Screen") { navController.navigate(Routes.VIEW_PAGER) }
         SameButton("Go To ItemsAnimator Screen") { navController.navigate(Routes.ITEMS_ANIMATOR) }
+        SameButton("Go To Loading Animator Circle Screen") { navController.navigate(Routes.LOADING_ANIMATION) }
+        SameButton("Go To SelectableItem Screen") { navController.navigate(Routes.SELECTABLE_ITEM) }
+        SameButton("Go To Canvas Drawer Screen") { navController.navigate(Routes.CANVAS) }
     }
 
 

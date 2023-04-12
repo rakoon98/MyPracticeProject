@@ -10,9 +10,7 @@ import com.example.test.compose.ui.bottom.Content1Screen
 import com.example.test.compose.ui.bottom.ContentsMainScreen
 import com.example.test.compose.ui.bottom.HomeScreen
 import com.example.test.compose.ui.bottom.MoreScreen
-import com.example.test.compose.ui.contents.ContentsDetail
-import com.example.test.compose.ui.contents.ItemAnimatorLazyColumn
-import com.example.test.compose.ui.contents.ViewPagerScreen
+import com.example.test.compose.ui.contents.*
 
 @Composable
 fun ComposeNavigation(navController: NavHostController) {
@@ -48,5 +46,8 @@ fun NavGraphBuilder.contentNavigationGraph(navController: NavController) {
         }
         composable(route = Routes.VIEW_PAGER) { ViewPagerScreen(navController) }
         composable(route = Routes.ITEMS_ANIMATOR) { ItemAnimatorLazyColumn() }
+        composable(route = Routes.LOADING_ANIMATION) { LoadingAnimationScreen() }
+        composable(route = Routes.SELECTABLE_ITEM) { SelectableItemScreen() }
+        composable(route = Routes.CANVAS) { CanvasCompose() }
     }
 }
